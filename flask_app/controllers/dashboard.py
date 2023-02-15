@@ -33,23 +33,3 @@ def chart():
     fig.savefig(buf, format="png")
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return f"<img src='data:image/png;base64, {data}'/>"
-
-@app.route('/map')
-def test_map():
-    context = staticmaps.Context()
-    context.set_tile_provider(staticmaps.tile_provider_OSM)
-    print(__file__)
-    locations = [[26.70802, -80.41645], [26.70977, -80.41865], [26.71439, -80.42484]]
-    markers = []
-    for location in locations:
-        markers.append(staticmaps.create_latlng(location[0], location[1]))
-    for marker in markers:
-        context.add_object(staticmaps.Marker(marker, color=staticmaps.RED, size=12))
-    
-    image = context.render_pillow(800, 500)
-    image.save('testmap.png')
-    im = Image.open('testmap.png')
-    data = io.BytesIO()
-    im.save(data, "PNG")
-    encoded_img_data = base64.b64encode(data.getvalue())    
-    return render_template("map.html", img_data = encoded_img_data.decode('utf-8'))

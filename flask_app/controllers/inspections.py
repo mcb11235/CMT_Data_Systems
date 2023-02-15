@@ -4,6 +4,29 @@ from flask import render_template, redirect, request, session, flash
 from flask_app.models.inspection import Inspection
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
+import base64
+import staticmaps
+import os
+import io
+from PIL import Image
+def location_mapper(locations):
+    context = staticmaps.Context()
+    context.set_tile_provider(staticmaps.tile_provider_OSM)
+    print(__file__)
+    markers = []
+    for location in locations:
+        markers.append(staticmaps.create_latlng(location[0], location[1]))
+    for marker in markers:
+        context.add_object(staticmaps.Marker(marker, color=staticmaps.RED, size=12))
+    image = context.render_pillow(800, 500)
+    image.save('testmap.png')
+    im = Image.open('testmap.png')
+    data = io.BytesIO()
+    im.save(data, "PNG")
+    encoded_img_data = base64.b64encode(data.getvalue())    
+    img_data = encoded_img_data.decode('utf-8') 
+    return img_data
+
 @app.route('/inspections')
 def inspections_dashboard():
     inspections = Inspection.get_all_posts()
@@ -14,20 +37,35 @@ def add_inspection():
     return render_template('new_inspection.html', projects=projects)
 @app.route('/publish_inspection', methods=['POST'])
 def publish_inspection():
-    if request.form['inspection_date'] == '' or request.form['inspection_time'] == '' or request.form['inspection_latitude'] == '' or request.form['inspection_longitude'] == '' or request.form['inspection_disposition']:
-        flash("All fields are required!")
-        return redirect('/inspection')
+    # I DON'T KNOW WHY THIS CONDITIIONAL IS TRUE !!
+    #if request.form['inspection_time'] == '' or request.form['inspection_latitude'] == '' or request.form['inspection_longitude'] == '' or request.form['inspection_disposition']:
+    #    print(request.form['inspection_date'], request.form['inspection_time'], request.form['inspection_latitude'], request.form['inspection_longitude'], request.form['inspection_disposition'], request.form['project_id'])
+    #    flash("All fields are required!")
+    #    return redirect('/inspections')
     data = {
         'users_id': session['user'],
-        'inspection_date': request.form['serial_number'],
-        'inspection_time': request.form['calibration_procedure'],
-        'inspection_latitude': request.form['test_method'],
-        'inspection_longitude': request.form['item'],
-        'inspection_disposition': request.form['category'],
-        'project_id': request.form['acquired_date']
+        'inspection_date': request.form['inspection_date'],
+        'inspection_time': request.form['inspection_time'],
+        'inspection_latitude': request.form['inspection_latitude'],
+        'inspection_longitude': request.form['inspection_longitude'],
+        'inspection_disposition': request.form['inspection_disposition'],
+        'project_id': request.form['project_id']
     }
-    Inspection.save_equipment(data)
-    return redirect(f'/inspection/{data.project_id}')
+    Inspection.save_inspection(data)
+    return redirect(f"/inspections/{data['project_id']}")
+@app.route('/inspections/<project_id>')
+def project_inspections(project_id):
+    data = {
+        'project_id': project_id
+    }
+    inspections = Inspection.get_project_inspections(data)
+    # Location data must go into location_mapper as LIST of [latitude, longitude]
+    locations = []
+    for result in inspections:
+        print(result.inspection_latitude[0], result.inspection_longitude[0])
+        locations.append([float(result.inspection_latitude[0]), float(result.inspection_longitude[0])])
+    map_data = location_mapper(locations)
+    return render_template('/project_inspections.html', posts = inspections, img_data=map_data)
 @app.route('/edit_equipment/<id>')
 def edit(id):
     data = {

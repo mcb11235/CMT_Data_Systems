@@ -33,30 +33,28 @@
 			{% endfor %}
 		{% endif %}
 	{% endwith %}
-    <h1>Equipment Inventory</h1>
+    <h1>Inspections</h1>
     <div class="card" style="margin-bottom: 10px;">
         <table>
             <tr class="card-text">
-                <th>Item</th>
-                <th>Serial Number</th>
-                <th>Calibration Procedure</th>
-                <th>Calibration Date</th>
-                <th>Frequency</th>
-                <th>Calibration Due</th>
+                <th>Inspection ID</th>
+                <th>Inspection Date</th>
+                <th>Inspection Time</th>
+                <th>Inspection Disposition</th>
+                <th>Project ID</th>
             </tr>            
             {% for post in posts %}
                 <tr class="card-text">
-                    <td>{{post.item[0]}}</td>
-                    <td>{{post.serial_number[0]}}</td>
-                    <td>{{post.calibration_procedure[0]}}</td>
-                    <td>{{post.calibration_date[0]}}</td>
-                    <td>{{post.frequency[0]}}</td>
-                    <td>{{post.calibration_due[0]}}</td>
-                    <td><a href="/edit_equipment/{{post.id[0]}}"><button>Edit</button></a></td>
+                    <td>{{post.inspection_id[0]}}</td>
+                    <td>{{post.inspection_date[0]}}</td>
+                    <td>{{post.inspection_time[0]}}</td>
+                    <td>{{post.inspection_disposition[0]}}</td>
+                    <td>{{post.project_id[0]}}</td>
+                    <td><a href="/edit_equipment/{{post.inspection_id[0]}}"><button>Edit</button></a></td>
                 </tr>
             {% endfor %}
         </table>
     </div>
 
-    <a href="/add_equipment"><button>Add New Equipment</button></a>
+    <a href="/add_inspection"><button>Add Inspection Result</button></a>
 </body>
