@@ -62,7 +62,7 @@ def project_inspections(project_id):
     # Location data must go into location_mapper as LIST of [latitude, longitude]
     locations = []
     for result in inspections:
-        print(result.inspection_latitude[0], result.inspection_longitude[0])
+        print(result.project_id)
         locations.append([float(result.inspection_latitude[0]), float(result.inspection_longitude[0])])
     map_data = location_mapper(locations)
     return render_template('/project_inspections.html', posts = inspections, img_data=map_data)
