@@ -6,5 +6,7 @@ from flask_app.controllers import inspections
 from flask_app.controllers import dashboard
 from flask_app.models.project import Project
 from flask_app.controllers import projects
+from flask_app.models.schedule import Schedule
+from flask_app.controllers import schedules
 if __name__ == "__main__":
     app.run(debug=True)

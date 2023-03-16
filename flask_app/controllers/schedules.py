@@ -52,8 +52,8 @@ def handle_edit_schedule():
     }
     Schedule.update_project(data)
     return redirect('/schedules')
-@app.route('/delete_project', methods=['POST'])
-def delete_project():
+@app.route('/delete_schedule', methods=['POST'])
+def delete_schedule():
     if str(session['user']) != str(request.form['user_id']):
         flash("You Do Not Have Permission To Delet This")
         return redirect('/schedules')
