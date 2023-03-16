@@ -11,9 +11,9 @@ def schedules():
 @app.route('/add_schedule')
 def add_schedule():
     return render_template('new_schedule.html')
-@app.route('/publish_project', methods=['POST'])
-def publish_project():
-    if request.form['projectid'] == '' or request.form['project_manager'] == '':
+@app.route('/publish_schedule', methods=['POST'])
+def publish_schedule():
+    if request.form['schedule_id'] == '' or request.form['project_manager'] == '':
         flash("All fields are required!")
         return redirect('/schedules')
     data = {
@@ -28,15 +28,15 @@ def publish_project():
     }
     Schedule.save_project(data)
     return redirect('/schedules')
-@app.route('/edit_project/<id>')
-def edit_project(id):
+@app.route('/edit_schedule/<id>')
+def edit_schedule(id):
     data = {
-        'projectid': id
+        'schedule_id': id
     }
     project_item = Schedule.get_one_by_id(data)
-    return render_template('edit_project.html', item=project_item)
-@app.route('/editproject', methods=['POST'])
-def handle_edit_project():
+    return render_template('edit_schedule.html', item=project_item)
+@app.route('/editschedule', methods=['POST'])
+def handle_edit_schedule():
     if request.form['projectid'] == '' or request.form['project_manager'] == '':
         flash("All fields are required!")
         return redirect('/schedules')
