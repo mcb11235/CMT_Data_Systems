@@ -10,13 +10,17 @@
 			{% endfor %}
 		{% endif %}
 	{% endwith %}
-    <h1>Add New Scheule Item</h1>
+    <h1>Add New Schedule Item</h1>
     <div class="form-group">
         <form action="/publish_schedule" method="POST">
             <label for="schedule_id">Schedule ID:</label>
             <input type="text" name="schedule_id" class="form-control"></input>
             <label for="project_id">Project Number:</label>
-            <input type="text" name="project_id" class="form-control"></input>
+            <select name="project_id" class="form-control">
+                {% for project in projects %}
+                    <option value="{{project.projectid[0]}}">{{project.projectid[0]}}</option>
+                {% endfor %}
+            </select>
             <label for="field_representative">Field Representative:</label>
             <input type="text" name="field_representative" class="form-control"></input>
             <label for="discipline">Discipline:</label>
@@ -29,6 +33,6 @@
             <input type="text" name="date" class="form-control"></input>
             <label for="notes">Notes:</label>
             <textarea name="notes" class="form-control"></textarea>
-            <input type="submit" value="Add Project" class="form-control">
+            <input type="submit" value="Add Schedule Item" class="form-control">
         </form>
     </div>

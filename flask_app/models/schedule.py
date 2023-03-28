@@ -15,7 +15,7 @@ class Schedule:
         self.notes = data['notes']
     @classmethod
     def save_schedule(cls, data):
-        query = "INSERT INTO schedules (schedule_id,project_id,field_representative,discipline,start_time,end_time,notes,date) VALUES (%(schedule_id)s,%(project_id)s,%(field_representative)s,%(discipine)s,%(start_time)s,%(end_time)s,%(date)s,%(notes)s);"
+        query = "INSERT INTO schedules (schedule_id,project_id,field_representative,discipline,start_time,end_time,date,notes) VALUES (%(schedule_id)s,%(project_id)s,%(field_representative)s,%(discipline)s,%(start_time)s,%(end_time)s,%(date)s,%(notes)s);"
         return connectToMySQL(schema_name).query_db(query, data)
     @classmethod
     def update_schedule(cls, data):

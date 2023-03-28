@@ -1,6 +1,7 @@
 from flask_app import app
 from flask import render_template, redirect, request, session, flash
 from flask_app.models.schedule import Schedule
+from flask_app.models.project import Project
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 @app.route('/schedules')
@@ -10,23 +11,24 @@ def schedules():
     return render_template('/schedules.html', posts = schedules)
 @app.route('/add_schedule')
 def add_schedule():
-    return render_template('new_schedule.html')
+    projects = Project.get_all_posts()
+    return render_template('new_schedule.html', projects = projects)
 @app.route('/publish_schedule', methods=['POST'])
 def publish_schedule():
-    if request.form['schedule_id'] == '' or request.form['project_manager'] == '':
+    if request.form['field_representative'] == '' or request.form['date'] == '':
         flash("All fields are required!")
-        return redirect('/schedules')
+        return redirect('/add_schedule')
     data = {
-        'projectid': request.form['projectid'],
-        'project_name': request.form['project_name'],
-        'client_name': request.form['client_name'],
-        'owner_name': request.form['owner_name'],
-        'project_manager': request.form['project_manager'],
-        'principal_engineer': request.form['principal_engineer'],
-        'total_budget': request.form['total_budget'],
-        'industry_sector': request.form['industry_sector']
+        'schedule_id': request.form['schedule_id'],
+        'project_id': request.form['project_id'],
+        'field_representative': request.form['field_representative'],
+        'discipline': request.form['discipline'],
+        'start_time': request.form['start_time'],
+        'end_time': request.form['end_time'],
+        'date': request.form['date'],
+        'notes': request.form['notes']
     }
-    Schedule.save_project(data)
+    Schedule.save_schedule(data)
     return redirect('/schedules')
 @app.route('/edit_schedule/<id>')
 def edit_schedule(id):
