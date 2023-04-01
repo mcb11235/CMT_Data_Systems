@@ -3,12 +3,9 @@
 Dashboard
 
 Schedule
-    - Add "/schedule" route
-    - "Add schedule" functionality
-        - Assign schedules to projects
-    - "Edit schedule" functionality
     - "Delete Schedule" functionality
     - Individual Schedule Page
+        - Soil Sample Pickup and Concrete Sampling should have "Assign Testing" link
 Earthwork
     - Assign tests to individual schedules/work orders
         - Field tests also assigned here.

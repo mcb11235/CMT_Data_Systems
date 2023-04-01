@@ -35,24 +35,23 @@ def edit_schedule(id):
     data = {
         'schedule_id': id
     }
-    project_item = Schedule.get_one_by_id(data)
-    return render_template('edit_schedule.html', item=project_item)
+    projects = Project.get_all_posts()
+    schedule_item = Schedule.get_one_by_id(data)
+    return render_template('edit_schedule.html', item=schedule_item, projects=projects)
 @app.route('/editschedule', methods=['POST'])
 def handle_edit_schedule():
-    if request.form['projectid'] == '' or request.form['project_manager'] == '':
+    if request.form['date'] == '' or request.form['field_representative'] == '':
         flash("All fields are required!")
         return redirect('/schedules')
     data = {
-        'projectid': request.form['projectid'],
-        'project_name': request.form['project_name'],
-        'client_name': request.form['client_name'],
-        'owner_name': request.form['owner_name'],
-        'project_manager': request.form['project_manager'],
-        'principal_engineer': request.form['principal_engineer'],
-        'total_budget': request.form['total_budget'],
-        'industry_sector': request.form['industry_sector']
+        'schedule_id' : request.form['schedule_id'],
+        'field_representative': request.form['field_representative'],
+        'discipline': request.form['discipline'],
+        'start_time': request.form['start_time'],
+        'end_time': request.form['end_time'],
+        'date': request.form['date']
     }
-    Schedule.update_project(data)
+    Schedule.update_schedule(data)
     return redirect('/schedules')
 @app.route('/delete_schedule', methods=['POST'])
 def delete_schedule():

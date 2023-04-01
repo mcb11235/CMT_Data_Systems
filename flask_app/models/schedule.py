@@ -19,7 +19,7 @@ class Schedule:
         return connectToMySQL(schema_name).query_db(query, data)
     @classmethod
     def update_schedule(cls, data):
-        query = "UPDATE schedules SET project_id=%(project_id)s,field_representative=%(field_representative)s,discipline=%(discipline)s,start_time=%(start_time)s,end_time=%(end_time)s,date=%(date)s,notes=%(notes)s WHERE schedule_id=%(schedule_id)s;"
+        query = "UPDATE schedules SET field_representative=%(field_representative)s,discipline=%(discipline)s,start_time=%(start_time)s,end_time=%(end_time)s,date=%(date)s WHERE schedule_id=%(schedule_id)s;"
         return connectToMySQL(schema_name).query_db(query, data)    
     @classmethod
     def get_all_posts(cls):
