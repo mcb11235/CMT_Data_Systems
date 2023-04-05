@@ -53,6 +53,13 @@ def handle_edit_schedule():
     }
     Schedule.update_schedule(data)
     return redirect('/schedules')
+@app.route('/schedules/<id>')
+def show_schedule(id):
+    data = {
+        'schedule_id': id
+    }
+    schedule_item = Schedule.get_one_by_id(data)
+    return render_template('show_schedule.html', item=schedule_item)
 @app.route('/delete_schedule', methods=['POST'])
 def delete_schedule():
     if str(session['user']) != str(request.form['user_id']):

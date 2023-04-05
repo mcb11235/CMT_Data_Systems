@@ -22,3 +22,7 @@ Inspections
 Reports
 
 Equipment
+
+## CODE CLEANUP
+
+    - Delete functions are all "delete_recipe()"

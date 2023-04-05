@@ -29,6 +29,7 @@
 <div class="card">
     <table>
         <tr class="card-text">
+            <th>Schedule ID</th>
             <th>Project ID</th>
             <th>Project Name</th>
             <th>Field Representative</th>
@@ -37,11 +38,10 @@
             <th>End Time</th>
             <th>Date</th>
             <th>Notes</th>
-            <th></th>
         </tr>
         {% for post in posts %}
         <tr class="card-text">
-            <td>{{post.schedule_id[0]}}</td>
+            <td><a href="/schedules/{{post.schedule_id[0]}}">{{post.schedule_id[0]}}</a></td>
             <td>{{post.project_id[0]}}</td>
             <td>{{post.field_representative[0]}}</td>
             <td>{{post.discipline[0]}}</td>
