@@ -22,24 +22,17 @@
         </div>
     </div>    
     <div class="form-group">
-        <form action="/editschedule" method="POST">
-            <div>
-                <p>Schedule ID: {{item.schedule_id[0]}}</p>
+        <form action="/receive_field_report" method="POST">
+            <div class="list-group" style="margin-bottom: 1vh;">
                 <input type="hidden" value="{{item.schedule_id[0]}}" name="schedule_id">
+                <input type="hidden" value="{{item.project_id[0]}}" name="project_id">
             </div>
-            <div>
-                <p>Project Number: {{item.project_id[0]}}</p>
+            <div class="input-group" style="margin-bottom: 1vh;">
+                <input type="checkbox" value="true" name="field_report_received" class="form-check-input" style="padding-right: 1vw;">
+                <label for="field_report_received" class="form-check-label" style="padding-right: 1vw;">Field Report Received</label>
+                <input type="checkbox" value="true" name="field_report_received" class="form-check-input" style="padding-right: 1vw;">
+                <label for="field_report_approved" class="form-check-label">Field Report Approved</label>
             </div>
-            <label for="field_representative">Field Representative:</label>
-            <input type="text" name="field_representative" class="form-control" value="{{item.field_representative[0]}}"></input>
-            <label for="discipline">Discipline:</label>
-            <input type="text" name="discipline" class="form-control" value="{{item.discipline[0]}}"></input>
-            <label for="start_time">Start Time:</label>
-            <input type="text" name="start_time" class="form-control" value="{{item.start_time[0]}}"></input>
-            <label for="end_time">End Time:</label>
-            <input type="text" name="end_time" class="form-control" value="{{item.end_time[0]}}"></input>
-            <label for="date">Date:</label>
-            <input type="text" name="date" class="form-control" value="{{item.date[0]}}"></input>
-            <input type="submit" value="Update Schedule Item" class="form-control">
+            <input type="submit" value="Update Status" class="form-control" >
         </form>
     </div>
