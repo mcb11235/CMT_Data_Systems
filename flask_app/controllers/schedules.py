@@ -60,6 +60,12 @@ def show_schedule(id):
     }
     schedule_item = Schedule.get_one_by_id(data)
     return render_template('show_schedule.html', item=schedule_item)
+@app.route('/receive_field_report', methods=['POST'])
+def receive_field_report():
+    print(type(request.form))
+    if request.form['field_report_received']:
+        sample_status = "true"
+    return redirect(f"/schedules/{request.form['schedule_id']}")
 @app.route('/delete_schedule', methods=['POST'])
 def delete_schedule():
     if str(session['user']) != str(request.form['user_id']):

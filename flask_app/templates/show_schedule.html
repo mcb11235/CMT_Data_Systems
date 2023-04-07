@@ -22,17 +22,24 @@
         </div>
     </div>    
     <div class="form-group">
+        <!-- On submit this will change the values of field_report_received/approved as dictated and will redirect back to the schedule item page. -->
+        <!-- Probably not the best way to implement this... --> 
         <form action="/receive_field_report" method="POST">
             <div class="list-group" style="margin-bottom: 1vh;">
                 <input type="hidden" value="{{item.schedule_id[0]}}" name="schedule_id">
                 <input type="hidden" value="{{item.project_id[0]}}" name="project_id">
             </div>
             <div class="input-group" style="margin-bottom: 1vh;">
-                <input type="checkbox" value="true" name="field_report_received" class="form-check-input" style="padding-right: 1vw;">
+                <input type="checkbox" value="true" name="field_report_received" class="form-check-input" style="padding-right: 1vw;" checked>
                 <label for="field_report_received" class="form-check-label" style="padding-right: 1vw;">Field Report Received</label>
-                <input type="checkbox" value="true" name="field_report_received" class="form-check-input" style="padding-right: 1vw;">
-                <label for="field_report_approved" class="form-check-label">Field Report Approved</label>
             </div>
             <input type="submit" value="Update Status" class="form-control" >
         </form>
     </div>
+    {% if item.discipline[0] == "Concrete Sampling" %}
+        <p>This is a concrete sampling</p>
+    {% elif item.discipline[0] == "Soil Sampling" %}
+        <p>This is a soil sampling</p>
+    {% elif item.discipline[0] == "Soil Sampling" %}
+        {% endif %}
+</body>
