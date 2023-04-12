@@ -63,8 +63,11 @@ def show_schedule(id):
 @app.route('/receive_field_report', methods=['POST'])
 def receive_field_report():
     print(type(request.form))
-    if request.form['field_report_received']:
+    if request.form.get('field_report_received'):
         sample_status = "true"
+    else:
+        sample_status = "false"
+        
     return redirect(f"/schedules/{request.form['schedule_id']}")
 @app.route('/delete_schedule', methods=['POST'])
 def delete_schedule():

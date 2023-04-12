@@ -37,9 +37,14 @@
         </form>
     </div>
     {% if item.discipline[0] == "Concrete Sampling" %}
-        <p>This is a concrete sampling</p>
-    {% elif item.discipline[0] == "Soil Sampling" %}
+    <div class="form-group">    
+        <form action="/concrete_redirect" method="POST">
+            <button>Add Concrete Tests</button>
+        </form>
+        </div>
+    {% elif item.discipline[0] == "Soil Sampling"%}
         <p>This is a soil sampling</p>
-    {% elif item.discipline[0] == "Soil Sampling" %}
+    {% elif item.discipline[0] == "Inspection"%}
+        <p>This is an inspection</p>
         {% endif %}
 </body>

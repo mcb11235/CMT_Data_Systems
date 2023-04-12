@@ -2,10 +2,16 @@
 
 Dashboard
 
+Projects
+    - Project should be individually selectable
+        - Selecting project should set project in session
+        - Schedules / Tests / Reports should only show according to project selected
+
 Schedule
     - "Delete Schedule" functionality
     - Individual Schedule Page
-        - Check boxes to verify receipt and quality check of field report
+        - Check boxes to verify receipt of field report
+        - Update field sheet should be done within the schedule
         - Soil Sample Pickup and Concrete Sampling should have "Assign Testing" link
 Earthwork
     - Assign tests to individual schedules/work orders
