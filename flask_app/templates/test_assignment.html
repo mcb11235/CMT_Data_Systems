@@ -1,0 +1,40 @@
+<head>
+	<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<p style="color: red; font-weight: bold;"> {{ message }}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+    <h1>Add New Schedule Item</h1>
+    <div>
+        <p>Schedule ID: {{item.schedule_id[0]}}</p>
+        <p>Project Number: {{item.project_id[0]}}</p>
+        <p>Field Representative: {{item.field_representative[0]}}</p>
+        <p>Discipline: {{item.discipline[0]}}</p>
+        <p>Date: {{item.date[0]}}</p>
+        <p>Start Time: {{item.start_time[0]}}</p>
+        <p>End Time: {{item.end_time[0]}}</p>
+    </div>
+    <div class="form-control">
+        <form action="/assign_concrete_tests">
+            <input type="hidden" value="{{item.schedule_id[0]}}" name="schedule_id">
+            <input type="checkbox" name="slump" value="slump">
+            <label for="slump">Slump</label>
+            <input type="checkbox" name="volumetric_air" value="volumetric_air">
+            <label for="volumetric_air">Volumetric Air Content</label>
+            <input type="checkbox" name="pressure_air" value="pressure_air">
+            <label for="pressure_air">Air Content by Pressure Method</label>
+            <input type="checkbox" name="compressive_strength" value="compressive_strength">
+            <label for="compressive_strength">Compressive Strength</label>
+            <label for="break_schedule">Break Schedule: </label>
+            <input type="text" name="break_schedule" value="1-7, 3-28, etc...">
+            <input type="submit" value="Assign Tests to Sample">
+        </form>
+
+    </div>
+</body>

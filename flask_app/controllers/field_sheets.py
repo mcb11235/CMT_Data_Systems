@@ -38,7 +38,7 @@ def edit_field_sheet(id):
     schedule_item = Schedule.get_one_by_id(data)
     return render_template('edit_schedule.html', item=schedule_item, projects=projects)
 @app.route('/editsheet', methods=['POST'])
-def handle_edit_sheet():
+def handle_edit_field_sheet():
     if request.form['date'] == '' or request.form['field_representative'] == '':
         flash("All fields are required!")
         return redirect('/schedules')

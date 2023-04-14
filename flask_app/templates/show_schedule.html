@@ -39,6 +39,7 @@
     {% if item.discipline[0] == "Concrete Sampling" %}
     <div class="form-group">    
         <form action="/concrete_redirect" method="POST">
+            <input type="hidden" name="schedule_id" value="{{item.schedule_id[0]}}">
             <button>Add Concrete Tests</button>
         </form>
         </div>
