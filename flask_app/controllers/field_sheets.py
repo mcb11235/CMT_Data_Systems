@@ -5,13 +5,22 @@ from flask_app.models.project import Project
 from flask_bcrypt import Bcrypt
 from flask_app.mongo_connection import connect_to_mongo
 bcrypt = Bcrypt(app)
+@app.route('/concrete_redirect', methods=['POST'])
+def concrete_redirect():
+    schedule_id = request.form['schedule_id']
+    return redirect(f'/field_sheet/{schedule_id}')
 @app.route('/field_sheet/<id>')
 def field_sheet(id):
-    data = {
-        'schedule_id': id
-    }
-    schedule_item = Schedule.get_one_by_id(data)
-    return render_template('/schedules.html', item = schedule_item)
+    # Check if field sheet is already in database
+    mongo_instance = connect_to_mongo()
+    field_sheets = mongo_instance['field_sheets']
+    # If there is already a document for the schedule_id, return a page with the data
+    if (field_sheets.find_one({'schedule_id': id})) != None:
+        field_sheet_data = field_sheets.find_one({'schedule_id': id})
+        return render_template('/field_sheet_data.html', data = field_sheet_data)
+    # If there is not a document for the schedule_id, return the form for entering data
+    else: 
+        return render_template('field_sheet_form.html', id=id)    
 @app.route('/publish_field_sheet')
 def publish_field_sheet():
     mongo_instance = connect_to_mongo()

@@ -5,11 +5,6 @@ from flask_app.models.project import Project
 from flask_bcrypt import Bcrypt
 from flask_app.mongo_connection import connect_to_mongo
 bcrypt = Bcrypt(app)
-@app.route('/concrete_redirect', methods=['POST'])
-def concrete_redirect():
-    schedule_id = request.form['schedule_id']
-    return redirect(f'/concrete_test_assignment/{schedule_id}')
-
 @app.route('/concrete_test_assignment/<id>')
 def test_assignment(id):
     data = {
