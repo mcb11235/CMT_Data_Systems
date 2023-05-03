@@ -19,8 +19,10 @@ def field_sheet(id):
         field_sheet_data = field_sheets.find_one({'schedule_id': id})
         return render_template('/field_sheet_data.html', data = field_sheet_data)
     # If there is not a document for the schedule_id, return the form for entering data
-    else: 
-        return render_template('field_sheet_form.html', id=id)    
+    else:
+        data = {"schedule_id": id}
+        schedule_item = Schedule.get_one_by_id(data) 
+        return render_template('field_sheet_form.html', schedule_item = schedule_item)    
 @app.route('/publish_field_sheet')
 def publish_field_sheet():
     mongo_instance = connect_to_mongo()
