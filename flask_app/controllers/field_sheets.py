@@ -18,6 +18,8 @@ def field_sheet(id):
     field_sheets = mongo_instance['field_sheets']
     # If there is already a document for the schedule_id, return a page with the data
     if (field_sheets.find_one({'schedule_id': id})) != None:
+        mongo_instance = connect_to_mongo()
+        field_sheets = mongo_instance['field_sheets']
         field_sheet_data = field_sheets.find_one({'schedule_id': id})
         return render_template('/field_sheet_data.html', data = field_sheet_data)
     # If there is not a document for the schedule_id, return the form for entering data

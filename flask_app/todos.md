@@ -12,6 +12,8 @@ Schedule
     - Individual Schedule Page
         - Check boxes to verify receipt of field report
         - Update field sheet should be done within the schedule
+            - Field sheet form should include selector for test type.
+                - Types including Concrete, Soil, Inspection, Other
         - Soil Sample Pickup and Concrete Sampling should have "Assign Testing" link
 Earthwork
     - Assign tests to individual schedules/work orders
