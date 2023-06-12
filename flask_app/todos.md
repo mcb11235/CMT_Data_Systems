@@ -25,7 +25,13 @@ Earthwork
         - Generate Reports
             - Generic Proctor Report, Individual test reports, Density Report
 Concrete
-
+    - Assign Tests to Concrete Sampling
+        - User will enter number of samples taken for particular schedule
+        - Page will render the tests and checkboxes for each sample
+    - Concrete Samples List
+        - Once tests are assigned, samples will show up in the concrete samples log
+    - Add Test Results
+        - 
 Inspections
 
 Reports
