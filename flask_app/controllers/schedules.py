@@ -7,7 +7,6 @@ bcrypt = Bcrypt(app)
 @app.route('/schedules')
 def schedules():
     schedules = Schedule.get_all_posts()
-    print(schedules)
     return render_template('/schedules.html', posts = schedules)
 @app.route('/add_schedule')
 def add_schedule():

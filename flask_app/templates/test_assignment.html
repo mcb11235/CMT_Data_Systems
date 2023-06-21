@@ -21,7 +21,7 @@
         <p>End Time: {{item.end_time[0]}}</p>
     </div>
     <div class="form-control">
-        <form action="/assign_concrete_tests">
+        <form action="/assign_concrete_tests" method="POST">
             <input type="hidden" value="{{item.schedule_id[0]}}" name="schedule_id">
             <input type="checkbox" name="slump" value="slump">
             <label for="slump">Slump</label>
@@ -35,6 +35,5 @@
             <input type="text" name="break_schedule" value="1-7, 3-28, etc...">
             <input type="submit" value="Assign Tests to Sample">
         </form>
-
     </div>
 </body>

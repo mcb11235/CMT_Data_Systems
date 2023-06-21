@@ -23,8 +23,6 @@
         <p>General Location: {{ data.general_location }}</p>
     </div>
     <div>
-        <form action="/assign_concrete_tests" method="POST">
-            <input type="hidden" value="{{ data.schedule_id }}" name="schedule_id">
-            <input type="submit" value="Assign Concrete Tests">
-        </form>
+        <a href="/concrete_test_assignment/{{data.schedule_id}}"><button>Assign Tests</button></a>
     </div>
+</body>

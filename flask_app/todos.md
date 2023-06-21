@@ -28,10 +28,11 @@ Concrete
     - Assign Tests to Concrete Sampling
         - User will enter number of samples taken for particular schedule
         - Page will render the tests and checkboxes for each sample
+        - Page will generate sample ID in this format: [SCHEDULE-ID]-C01, -C02, -C03, etc...
     - Concrete Samples List
         - Once tests are assigned, samples will show up in the concrete samples log
     - Add Test Results
-        - 
+        - Wil be accessed via sample log
 Inspections
 
 Reports
