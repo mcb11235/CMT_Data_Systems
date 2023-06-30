@@ -11,7 +11,8 @@ bcrypt = Bcrypt(app)
 def display_concrete_samples():
     mongo_instance = connect_to_mongo()
     concrete_samples_collection = mongo_instance['concrete_samples']
+    field_sheets_collection = mongo_instance['field_sheets']
     concrete_samples = []
     for sample in concrete_samples_collection.find():
         concrete_samples.append(sample)
-    return redirect(f'/field_sheet/{schedule_id}')
+    return render_template('concrete_samples.html', samples=concrete_samples)
