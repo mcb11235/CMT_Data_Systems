@@ -14,5 +14,16 @@ def display_concrete_samples():
     field_sheets_collection = mongo_instance['field_sheets']
     concrete_samples = []
     for sample in concrete_samples_collection.find():
-        concrete_samples.append(sample)
+        data = {}
+        field_sheet = field_sheets_collection.find_one({"schedule_id": sample['schedule_id']})
+        tests = list(sample.keys())
+        tests.pop(0)
+        tests.pop(0)
+        # TESTS LIST NEEDS TO BE PROCESSED BEFORE DISPLAY
+        data['project_id'] = field_sheet['project_id']
+        data['schedule_id'] = field_sheet['schedule_id']
+        data['sample_date'] = field_sheet['field_activity_date']
+        data['general_location'] = field_sheet['general_location']
+        data['tests'] = tests
+        concrete_samples.append(data)
     return render_template('concrete_samples.html', samples=concrete_samples)
