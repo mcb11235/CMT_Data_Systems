@@ -23,6 +23,7 @@
     <div class="form-control">
         <form action="/assign_concrete_tests" method="POST">
             <input type="hidden" value="{{item.schedule_id[0]}}" name="schedule_id">
+            <input type="hidden" value="{{sample_id}}" name="sample_id">
             <input type="checkbox" name="slump" value="slump">
             <label for="slump">Slump</label>
             <input type="checkbox" name="volumetric_air" value="volumetric_air">

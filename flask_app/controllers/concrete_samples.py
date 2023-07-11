@@ -20,10 +20,16 @@ def display_concrete_samples():
         tests.pop(0)
         tests.pop(0)
         # TESTS LIST NEEDS TO BE PROCESSED BEFORE DISPLAY
+        processed_tests = []
+        for test in tests:
+            processed = str(test.replace('_', ' '))
+            processed = processed.title()
+            processed_tests.append(processed)
         data['project_id'] = field_sheet['project_id']
         data['schedule_id'] = field_sheet['schedule_id']
+        data['sample_id'] = sample['sample_id']
         data['sample_date'] = field_sheet['field_activity_date']
         data['general_location'] = field_sheet['general_location']
-        data['tests'] = tests
+        data['tests'] = processed_tests
         concrete_samples.append(data)
     return render_template('concrete_samples.html', samples=concrete_samples)

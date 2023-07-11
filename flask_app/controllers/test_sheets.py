@@ -10,8 +10,9 @@ def test_assignment(id):
     data = {
         'schedule_id': id
     }
+    sample_id = str(id) + '-001'
     schedule_item = Schedule.get_one_by_id(data)
-    return render_template('/test_assignment.html', item = schedule_item)
+    return render_template('/test_assignment.html', item = schedule_item, sample_id = sample_id)
 @app.route('/assign_concrete_tests', methods=['POST'])
 def assign_concrete_tests():
     mongo_instance = connect_to_mongo()
@@ -19,6 +20,7 @@ def assign_concrete_tests():
     concrete_samples = mongo_instance['concrete_samples']
     print("Database collection retreived")
     data = {
+        'sample_id': request.form['sample_id'],
         'schedule_id': request.form['schedule_id']
     }
     assigned_tests = request.form.keys()
