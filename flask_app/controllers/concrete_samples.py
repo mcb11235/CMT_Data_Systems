@@ -19,6 +19,9 @@ def display_concrete_samples():
         tests = list(sample.keys())
         tests.pop(0)
         tests.pop(0)
+        tests.pop(0)
+        tests.pop(-1)
+        print(tests)
         # TESTS LIST NEEDS TO BE PROCESSED BEFORE DISPLAY
         processed_tests = []
         for test in tests:
