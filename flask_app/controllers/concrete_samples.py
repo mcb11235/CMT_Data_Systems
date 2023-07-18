@@ -36,3 +36,12 @@ def display_concrete_samples():
         data['tests'] = processed_tests
         concrete_samples.append(data)
     return render_template('concrete_samples.html', samples=concrete_samples)
+@app.route('/concrete/samples/<id>', methods=['GET'])
+def display_concrete_sample(id):
+    mongo_instance = connect_to_mongo()
+    concrete_samples_collection = mongo_instance['concrete_samples']
+    field_sheets_collection = mongo_instance['field_sheets']
+    # Use id parameter to find field sheet and concrete document
+        # ex: concrete_samples_collection.find_one({"sample_id": id})
+    # Use keys from each sample document to make an iterable to generate form for inputting test data
+    
