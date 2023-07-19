@@ -12,6 +12,8 @@ Schedule
     - Individual Schedule Page
         - Check boxes to verify receipt of field report
         - Update field sheet should be done within the schedule
+            - Field sheet form should include selector for test type.
+                - Types including Concrete, Soil, Inspection, Other
         - Soil Sample Pickup and Concrete Sampling should have "Assign Testing" link
 Earthwork
     - Assign tests to individual schedules/work orders
@@ -23,7 +25,14 @@ Earthwork
         - Generate Reports
             - Generic Proctor Report, Individual test reports, Density Report
 Concrete
-
+    - Assign Tests to Concrete Sampling
+        - User will enter number of samples taken for particular schedule
+        - Page will render the tests and checkboxes for each sample
+        - Page will generate sample ID in this format: [SCHEDULE-ID]-C01, -C02, -C03, etc...
+    - Concrete Samples List
+        - Once tests are assigned, samples will show up in the concrete samples log
+    - Add Test Results
+        - Wil be accessed via sample log
 Inspections
 
 Reports

@@ -29,26 +29,22 @@
 <div class="card">
     <table>
         <tr class="card-text">
-            <th>Schedule ID</th>
             <th>Project ID</th>
-            <th>Field Representative</th>
-            <th>Discipline</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-            <th>Date</th>
-            <th>Notes</th>
+            <th>Sample ID</th>
+            <th>Sample Date</th>
+            <th>General Location</th>
+            <th>Tests</th>
         </tr>
-        {% for post in posts %}
+        {% for sample in samples %}
         <tr class="card-text">
-            <td><a href="/schedules/{{post.schedule_id[0]}}">{{post.schedule_id[0]}}</a></td>
-            <td>{{post.project_id[0]}}</td>
-            <td>{{post.field_representative[0]}}</td>
-            <td>{{post.discipline[0]}}</td>
-            <td>{{post.start_time[0]}}</td>
-            <td>{{post.end_time[0]}}</td>
-            <td>{{post.date[0]}}</td>
-            <td>{{post.notes}}</td>
-            <td><a href="/edit_schedule/{{post.schedule_id[0]}}"><button class="btn-primary">Edit Schedule Item</button></a></td>    
+            <td>{{sample.project_id}}</td>
+            <td><a href="/concrete/samples/{{sample.sample_id}}">{{sample.sample_id}}</a></td>
+            <td>{{sample.sample_date}}</td>
+            <td>{{sample.general_location}}</td>
+            <td>{% for test in sample.tests %}
+                    <li>{{ test }}</li>                 
+                    {% endfor %}
+            </td>    
         </tr>
         {% endfor %}
     </table>

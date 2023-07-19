@@ -12,18 +12,16 @@
 	{% endwith %}
     <h1>Add New Schedule Item</h1>
     <div>
-        <p>Schedule ID: {{item.schedule_id[0]}}</p>
-        <p>Project Number: {{item.project_id[0]}}</p>
-        <p>Field Representative: {{item.field_representative[0]}}</p>
-        <p>Discipline: {{item.discipline[0]}}</p>
-        <p>Date: {{item.date[0]}}</p>
-        <p>Start Time: {{item.start_time[0]}}</p>
-        <p>End Time: {{item.end_time[0]}}</p>
+        <p>Schedule ID: </p>
+        <p>Project Number: </p>
+        <p>Field Representative: </p>
+        <p>Discipline: </p>
+        <p>Date: </p>
+        <p>Start Time: </p>
+        <p>End Time: </p>
     </div>
     <div class="form-control">
-        <form action="/assign_concrete_tests" method="POST">
-            <input type="hidden" value="{{item.schedule_id[0]}}" name="schedule_id">
-            <input type="hidden" value="{{sample_id}}" name="sample_id">
+        <form action="/submit_concrete_results" method="POST">
             <input type="checkbox" name="slump" value="slump">
             <label for="slump">Slump</label>
             <input type="checkbox" name="volumetric_air" value="volumetric_air">

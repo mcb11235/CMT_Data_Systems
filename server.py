@@ -11,6 +11,7 @@ from flask_app.models.schedule import Schedule
 from flask_app.controllers import schedules
 from flask_app.controllers import field_sheets
 from flask_app.controllers import test_sheets
+from flask_app.controllers import concrete_samples
 if __name__ == "__main__":
     app.run(debug=True)
     

@@ -38,7 +38,7 @@
                 "sha256:b9c46cc36662a7949f34b52d8ec7bb59c0d74ba08ba6cb9ce9adc1d8676d9526"
             ],
             "index": "pypi",
-            "version": "==2.2.2"
+            "version": ">=2.2.5"
         },
         "itsdangerous": {
             "hashes": [
