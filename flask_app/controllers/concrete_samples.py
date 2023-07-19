@@ -44,17 +44,24 @@ def display_concrete_sample(id):
     sample = concrete_samples_collection.find_one({'sample_id': id})
     # Use id parameter to find field sheet and concrete document
         # ex: concrete_samples_collection.find_one({"sample_id": id})
+    # Use keys from each sample document to make an iterable to generate form for inputting test data
     tests = list(sample.keys())
     del tests[0:2]
     tests.pop(-1)
     # Parse break_schedule value
-        # For example: break_schedule = string '1-7,3-28'
-        # value.split(',')
-            # Returns ['1-7', '3-28']
-            # For value in values
-            #   value.split('-')
-                # Should return [[1, 7], [3,28]]
-    print(sample['break_schedule'])
+    break_schedule = sample['break_schedule']
+    break_schedule = break_schedule.split(',')
+    temp_schedule = []
+    for value in break_schedule:
+        temp_schedule.append(value.split('-'))
+    schedule = []
+    for i in temp_schedule:
+        for j in range(int(i[0])):
+            schedule.append(i[1]) 
+    print(schedule)
     
-    # Use keys from each sample document to make an iterable to generate form for inputting test data
+    return render_template('concrete_test_sheet.html', break_schedule=break_schedule)
+    
+    
+    
     
