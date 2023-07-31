@@ -10,29 +10,18 @@
 			{% endfor %}
 		{% endif %}
 	{% endwith %}
-    <h1>Add New Schedule Item</h1>
+    <h1>Add Concrete Test Results</h1>
     <div>
-        <p>Schedule ID: </p>
-        <p>Project Number: </p>
-        <p>Field Representative: </p>
-        <p>Discipline: </p>
-        <p>Date: </p>
-        <p>Start Time: </p>
-        <p>End Time: </p>
+        <p>Schedule ID: {{field_sheet['schedule_id']}} </p>
+        <p>Project Number: {{field_sheet['project_id']}} </p>
+        <p>Field Representative: {{field_sheet['field_representative']}}</p>
+        <p>Date: {{field_sheet['field_activity_date']}}</p>
+        <p>Start Time: {{field_sheet['start_time']}}</p>
+        <p>End Time: {{field_sheet['end_time']}}</p>
     </div>
     <div class="form-control">
         <form action="/submit_concrete_results" method="POST">
-            <input type="checkbox" name="slump" value="slump">
-            <label for="slump">Slump</label>
-            <input type="checkbox" name="volumetric_air" value="volumetric_air">
-            <label for="volumetric_air">Volumetric Air Content</label>
-            <input type="checkbox" name="pressure_air" value="pressure_air">
-            <label for="pressure_air">Air Content by Pressure Method</label>
-            <input type="checkbox" name="compressive_strength" value="compressive_strength">
-            <label for="compressive_strength">Compressive Strength</label>
-            <label for="break_schedule">Break Schedule: </label>
-            <input type="text" name="break_schedule" value="1-7, 3-28, etc...">
-            <input type="submit" value="Assign Tests to Sample">
+            
         </form>
     </div>
 </body>

@@ -45,8 +45,10 @@ def display_concrete_sample(id):
     # Use id parameter to find field sheet and concrete document
         # ex: concrete_samples_collection.find_one({"sample_id": id})
     # Use keys from each sample document to make an iterable to generate form for inputting test data
+    field_sheet = field_sheets_collection.find_one({'schedule_id':sample['schedule_id']})
     tests = list(sample.keys())
     del tests[0:2]
+    del tests[0]
     tests.pop(-1)
     # Parse break_schedule value
     break_schedule = sample['break_schedule']
@@ -59,8 +61,8 @@ def display_concrete_sample(id):
         for j in range(int(i[0])):
             schedule.append(i[1]) 
     print(schedule)
-    
-    return render_template('concrete_test_sheet.html', break_schedule=break_schedule)
+    print(tests)
+    return render_template('concrete_test_sheet.html', break_schedule=break_schedule, tests = tests, field_sheet=field_sheet)
     
     
     
