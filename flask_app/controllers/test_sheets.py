@@ -10,7 +10,7 @@ def test_assignment(id):
     data = {
         'schedule_id': id
     }
-    sample_id = str(id) + '-Cs1'
+    sample_id = str(id) + '-C1'
     schedule_item = Schedule.get_one_by_id(data)
     return render_template('/test_assignment.html', item = schedule_item, sample_id = sample_id)
 @app.route('/assign_concrete_tests', methods=['POST'])
