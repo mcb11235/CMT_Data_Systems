@@ -62,7 +62,7 @@ def display_concrete_sample(id):
             schedule.append(i[1]) 
     print(schedule)
     print(tests)
-    return render_template('concrete_test_sheet.html', break_schedule=break_schedule, tests = tests, field_sheet=field_sheet)
+    return render_template('concrete_test_sheet.html', break_schedule=schedule, tests = tests, field_sheet=field_sheet)
     
     
     

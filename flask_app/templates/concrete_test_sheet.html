@@ -21,7 +21,20 @@
     </div>
     <div class="form-control">
         <form action="/submit_concrete_results" method="POST">
-            
+            {% for test in tests %}
+                {% if test=="compressive_strength" %}
+                    <div>
+                        <!-- NEED INPUTS FOR ALL REQUIRED COMPRESSIVE STRENGTH DATA -->
+                        {% for age in break_schedule %}
+                        <label for="{{age}}+{{loop.index0}}">{{age}} Days: </label>
+                        <input name="{{age}}+{{loop.index0}}"> 
+                        {% endfor %}
+                    </div>
+                {% else %}
+                <label for="{{test}}">{{test}}: </label>
+                <input name="{{test}}">
+                {% endif %}
+            {% endfor %}
         </form>
     </div>
 </body>
