@@ -23,7 +23,7 @@ class Inspection:
                 
     @classmethod
     def save_inspection(cls, data):
-        query = "INSERT INTO inspections (inspection_date,inspection_time,inspection_latitude,inspection_longitude,inspection_disposition,project_id) VALUES ( %(inspection_date)s,%(inspection_time)s,%(inspection_latitude)s,%(inspection_longitude)s,%(inspection_disposition)s,%(project_id)s);"
+        query = "INSERT INTO inspections (inspection_date,inspection_time,inspection_latitude,inspection_longitude,inspection_disposition,project_id) VALUES ( %(inspection_date)s,%(inspection_time)s,%(inspection_latitude)s,%(inspection_longitude)s,%(inspection_disposition)ss,%(project_id)s);"
         return connectToMySQL(schema_name).query_db(query, data)
     @classmethod
     def update_inspection(cls, data):
